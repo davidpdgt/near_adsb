@@ -16,13 +16,13 @@ class adsb_api():
         self.config_longitude = config_lon
         self.config_distance = config_dist
 
-        if type(self.config_latitude) is not (float | int):
+        if not (isinstance(self.config_latitude, float) or isinstance(self.config_latitude, int)):
             raise TypeError(f"The latitude is of the wrong type. Expecting float or int, recieved {type(self.config_latitude)}")
         
-        if type(self.config_longitude) is not (float | int):
+        if not (isinstance(self.config_longitude, float) or isinstance(self.config_longitude, int)):
             raise TypeError(f"The longitude is of the wrong type. Expecting float or int, recieved {type(self.config_longitude)}")
         
-        if type(self.config_distance) is not (float | int):
+        if not (isinstance(self.config_distance, float) or isinstance(self.config_distance, int)):
             raise TypeError(f"The distance is of the wrong type. Expecting float or int, recieved {type(self.config_distance)}")
 
         if self.config_distance < 0:
@@ -72,4 +72,4 @@ if __name__ == "__main__":
         raise Exception
 
     program = adsb_api(config["latitude"], config["longitude"], config["distance"])
-    program.get_data_from_api()
+    print(program.get_data_from_api())
